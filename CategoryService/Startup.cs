@@ -30,7 +30,8 @@ namespace CategoryService
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("iProductContext")));
-                
+            
+            services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

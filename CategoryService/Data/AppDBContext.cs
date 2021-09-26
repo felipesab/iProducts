@@ -1,3 +1,4 @@
+using CategoryService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CategoryService.Data
@@ -9,6 +10,6 @@ namespace CategoryService.Data
             
         }
 
-        public DbSet<AppDbContext> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
