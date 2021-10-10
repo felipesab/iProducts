@@ -8,6 +8,7 @@ namespace CategoryService.Data
     public class CategoryRepo : ICategoryRepo
     {
         private AppDbContext _context { get; }
+        
         public CategoryRepo(AppDbContext context)
         {
             _context = context;

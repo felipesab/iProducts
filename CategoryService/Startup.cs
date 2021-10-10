@@ -28,8 +28,9 @@ namespace CategoryService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string mySqlConnectionStr = Configuration.GetConnectionString("iProductContext");
             services.AddDbContext<AppDbContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("iProductContext")));
+                options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
             
             services.AddScoped<ICategoryRepo, CategoryRepo>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -60,6 +61,8 @@ namespace CategoryService
             {
                 endpoints.MapControllers();
             });
+
+            PrepDb.PrepSeed(app);
         }
     }
 }

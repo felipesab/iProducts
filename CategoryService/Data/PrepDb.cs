@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CategoryService.Data
 {
-    public class PrepDb
+    public static class PrepDb
     {
-        public void PrepSeed(IApplicationBuilder app)
+        public static void PrepSeed(IApplicationBuilder app)
         {
             using(var serviceScope = app.ApplicationServices.CreateScope())
             {
@@ -16,14 +16,14 @@ namespace CategoryService.Data
             }
         }
 
-        private void Seed(AppDbContext context)
+        private static void Seed(AppDbContext context)
         {
             if(!context.Categories.Any())
             {
                 context.Categories.AddRange(
                     new Category(){Name = "Food", CreateDate = DateTime.Now},
                     new Category(){Name = "Eletronics", CreateDate = DateTime.Now},
-                    new Category(){Name = "Health", CreateDate = DateTime.Now} 
+                    new Category(){Name = "Health", CreateDate = DateTime.Now}
                 );
             }
 

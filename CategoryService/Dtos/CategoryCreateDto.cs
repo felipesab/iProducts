@@ -8,7 +8,6 @@ namespace CategoryService.Dtos
         [Required]
         public string Name { get; init; }
 
-        [Required]
-        public DateTime CreateDate { get; init; }
+        public DateTime CreateDate { get; set; }
     }
 }
